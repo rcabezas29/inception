@@ -6,7 +6,7 @@
 #    By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/17 19:45:39 by rcabezas          #+#    #+#              #
-#    Updated: 2021/05/21 14:28:29 by rcabezas         ###   ########.fr        #
+#    Updated: 2021/05/21 17:51:33 by rcabezas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ all:
 	@docker build -t nginx_rcabezas ./srcs/requirements/nginx/
 	@docker build -t mariadb_rcabezas ./srcs/requirements/mariadb/
 	@docker build -t wordpress_rcabezas ./srcs/requirements/mariadb/
-	@docker-compose up -f ./srcs/docker-compose.yaml
+	@docker-compose up -d -f ./srcs/docker-compose.yaml
 
 fclean:
 	@docker-compose down

@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.13
 
 RUN apk update && \
 	apk add nginx openssl openssh
@@ -11,6 +11,6 @@ RUN mkdir /run/nginx/ && \
     -out /etc/ssl/certs/nginx-selfsigned.crt \
     -keyout /etc/ssl/private/nginx-selfsigned.key
 
-EXPOSE 443
+EXPOSE 443 80
 
-CMD nginx && tail -f /var/log/nginx/*.log
+CMD nginx && tail -f
