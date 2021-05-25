@@ -13,4 +13,4 @@ RUN mkdir /run/nginx/ && \
 
 EXPOSE 443 80
 
-CMD nginx && tail -f
+CMD nginx && tail -f /var/log/nginx/*.log

@@ -5,9 +5,6 @@ RUN apk update && \
 
 RUN wget http://wordpress.org/latest.tar.gz && tar -xzvf latest.tar.gz && \	
 	rm latest.tar.gz && \
-	mv wordpress/* /var/www/localhost/ && \
-	mkdir /run/nginx/
+	mv wordpress/* /var/www/localhost/
 
-COPY srcs/default.conf /etc/nginx/conf.d/default.conf
-
-CMD php-fpm7 && nginx
+CMD php-fpm7
