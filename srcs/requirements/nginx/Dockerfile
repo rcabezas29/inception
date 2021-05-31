@@ -11,6 +11,4 @@ RUN mkdir /run/nginx/ && \
     -out /etc/ssl/certs/nginx-selfsigned.crt \
     -keyout /etc/ssl/private/nginx-selfsigned.key
 
-EXPOSE 443 80
-
 CMD nginx && tail -f /var/log/nginx/*.log
