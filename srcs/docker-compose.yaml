@@ -2,10 +2,17 @@ version: "3.9"
 services:
   nginx:
     image: nginx_rcabezas
+    container_name: nginx
     ports:
       - "443:443"
       - "80:80"
   mariadb:
     image: mariadb_rcabezas
+    container_name: mariadb
+    ports:
+      - "3306:3306"
   wordpress:
     image: wordpress_rcabezas
+    container_name: wordpress
+    ports:
+      - "9000:80"

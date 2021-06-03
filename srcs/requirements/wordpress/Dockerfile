@@ -6,6 +6,8 @@ RUN apk update && \
     php7-pdo_mysql php7-soap php7-xmlrpc php7-posix php7-mcrypt php7-gettext \
     php7-ldap php7-ctype php7-dom
 
+COPY /srcs/wp-config.php /tmp
+
 RUN sed -i '/include "mod_fastcgi.conf"/s/^#//g' /etc/lighttpd/lighttpd.conf
 
 RUN mkdir /run/openrc; touch /run/openrc/softlevel
@@ -14,6 +16,7 @@ RUN mkdir -p /usr/share/webapps/ && \
 	wget http://wordpress.org/latest.tar.gz && tar -xzvf latest.tar.gz && \
 	rm latest.tar.gz && \
 	mv /wordpress /usr/share/webapps/ && \
+	mv /tmp/wp-config.php //usr/share/webapps/wordpress/wp-config-sample.php && \
 	chown -R lighttpd /usr/share/webapps/ && \
 	ln -s /usr/share/webapps/wordpress/ /var/www/localhost/htdocs/wordpress
 
