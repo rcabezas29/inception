@@ -18,6 +18,7 @@ RUN mkdir -p /usr/share/webapps/ && \
 	mv /wordpress /usr/share/webapps/ && \
 	mv /tmp/wp-config.php /usr/share/webapps/wordpress/ && \
 	chown -R lighttpd /usr/share/webapps/ && \
-	ln -s /usr/share/webapps/wordpress/ /var/www/localhost/htdocs/wordpress
+	rm -rf /var/www/localhost/htdocs && \
+	ln -s /usr/share/webapps/wordpress/ /var/www/localhost/htdocs
 
 CMD openrc && rc-service lighttpd start && tail -f /var/log/lighttpd/*.log

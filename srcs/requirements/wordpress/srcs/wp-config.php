@@ -81,6 +81,8 @@ define( 'WP_DEBUG', false );
 
 /* That's all, stop editing! Happy publishing. */
 
+$_SERVER['HTTPS'] = 'on';
+
 /** Absolute path to the WordPress directory. */
 if ( ! defined( 'ABSPATH' ) ) {
         define( 'ABSPATH', __DIR__ . '/' );
