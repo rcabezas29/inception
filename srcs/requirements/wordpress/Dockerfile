@@ -12,13 +12,15 @@ RUN sed -i '/include "mod_fastcgi.conf"/s/^#//g' /etc/lighttpd/lighttpd.conf
 
 RUN mkdir /run/openrc; touch /run/openrc/softlevel
 
+RUN mkdir /run/lighttpd && chmod -R 777 /run/lighttpd
+
 RUN mkdir -p /usr/share/webapps/ && \
 	wget http://wordpress.org/latest.tar.gz && tar -xzvf latest.tar.gz && \
 	rm latest.tar.gz && \
 	mv /wordpress /usr/share/webapps/ && \
 	mv /tmp/wp-config.php /usr/share/webapps/wordpress/ && \
 	chown -R lighttpd /usr/share/webapps/ && \
-	rm -rf /var/www/localhost/htdocs && \
-	ln -s /usr/share/webapps/wordpress/ /var/www/localhost/htdocs
+	rm -rf /var/www/localhost/htdocs/ && \
+	ln -s /usr/share/webapps/wordpress /var/www/localhost/htdocs
 
 CMD openrc && rc-service lighttpd start && tail -f /var/log/lighttpd/*.log
