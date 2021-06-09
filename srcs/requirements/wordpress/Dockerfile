@@ -8,7 +8,9 @@ RUN apk update && \
 
 COPY /srcs/wp-config.php /tmp
 
-RUN sed -i '/include "mod_fastcgi.conf"/s/^#//g' /etc/lighttpd/lighttpd.conf
+RUN sed -i '/include "mod_fastcgi.conf"/s/^#//g' /etc/lighttpd/lighttpd.conf && \
+	sed -i '/server.port/s/^#//g' /etc/lighttpd/lighttpd.conf && \
+	sed -i '/server.port/s/81/9000/g' /etc/lighttpd/lighttpd.conf
 
 RUN mkdir /run/openrc; touch /run/openrc/softlevel
 
