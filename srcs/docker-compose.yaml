@@ -6,25 +6,17 @@ services:
     ports:
       - "443:443"
       - "80:80"
+    restart: always
   mariadb:
     image: mariadb_rcabezas
     container_name: mariadb
-    environment:
-      MARIADB_ROOT_PASS: ${MYSQL_ROOT_PASSWORD}
-      MARIADB_USER: ${MYSQL_USER}
-      MARIADB_PASSWD: ${MYSQL_PASSWORD}
-    ports:
-      - "3306:3306"
+    env_file: .env
+    restart: always
     #volumes:
     #  - /home/rcabezas/data/db:/var/lib/mysql
   wordpress:
     image: wordpress_rcabezas
     container_name: wordpress
-    environment:
-      MARIADB_ROOT_PASS: ${MYSQL_ROOT_PASSWORD}
-      MARIADB_USER: ${MYSQL_USER}
-      MARIADB_PASSWD: ${MYSQL_PASSWORD}
-    ports:
-      - "9000:80"
+    restart: always
     #volumes:
     #  - /home/rcabezas/data/wordpress:/usr/share/webapps/

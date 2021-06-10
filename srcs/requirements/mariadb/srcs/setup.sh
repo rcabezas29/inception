@@ -1,6 +1,9 @@
-/usr/bin/mysqld --user=mysql --datadir=/var/lib/mysql --plugin-dir=/usr/lib/mariadb/plugin --pid-file=/run/mysqld/mariadb.pid --port=3306 --log-error=/var/log/mysqld.log --log-warnings=4 --skip-networking=0
+rc-service mariadb restart
+sleep 3
 
+mysql -e "SET GLOBAL general_log=1;"
+mysql -e "SET GLOBAL general_log_file='/var/log/mysql/mariadb.log';"
 mysql -e "CREATE DATABASE wp_db;"
 mysql -e "CREATE USER 'rcabezas'@'%' IDENTIFIED BY 'password';"
-mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'rcabezas'@'%';"
+mysql -e "GRANT ALL PRIVILEGES ON wp_db.* TO 'rcabezas'@'%';"
 mysql -e "FLUSH PRIVILEGES;"
