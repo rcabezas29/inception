@@ -10,4 +10,4 @@ COPY srcs/setup.sh .
 
 RUN chmod -R 777 setup.sh
 
-CMD ./setup.sh && tail -f /var/log/mysql/mariadb.log
+CMD ./setup.sh && tail -f /dev/null
