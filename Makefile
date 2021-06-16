@@ -6,7 +6,7 @@
 #    By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/17 19:45:39 by rcabezas          #+#    #+#              #
-#    Updated: 2021/06/03 16:04:54 by rcabezas         ###   ########.fr        #
+#    Updated: 2021/06/15 10:35:13 by rcabezas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ all:
 fclean:
 	@docker-compose -f ./srcs/docker-compose.yaml stop
 	@docker system prune -af
+	@docker volume prune -f
 
 re: fclean all
 

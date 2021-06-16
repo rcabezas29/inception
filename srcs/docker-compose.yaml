@@ -7,16 +7,22 @@ services:
       - "443:443"
       - "80:80"
     restart: always
+    volumes:
+      - wordpress:/var/www/localhost/htdocs
   mariadb:
     image: mariadb_rcabezas
     container_name: mariadb
     env_file: .env
     restart: always
-    #volumes:
-    #  - /home/rcabezas/data/db:/var/lib/mysql
+    volumes:
+      - db:/var/lib/mysql
   wordpress:
     image: wordpress_rcabezas
     container_name: wordpress
     restart: always
-    #volumes:
-    #  - /home/rcabezas/data/wordpress:/usr/share/webapps/
+    volumes:
+      - wordpress:/usr/share/webapps
+
+volumes:
+  wordpress:
+  db:
