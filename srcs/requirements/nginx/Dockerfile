@@ -5,6 +5,8 @@ RUN apk update && \
 
 COPY srcs/nginx.conf /etc/nginx/conf.d/default.conf
 
+RUN chown -R nginx /var/www/localhost/htdocs/
+
 RUN mkdir /run/nginx/ && \
 	openssl req -x509 -nodes -days 365 \
     -newkey rsa:2048 -subj "/C=SP/ST=Spain/L=Madrid/O=42/CN=localhost" \

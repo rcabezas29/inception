@@ -10,6 +10,10 @@ COPY /srcs/wp-config.php /tmp
 
 RUN sed -e '/skip-networking/s/^/#/g' -i /etc/my.cnf.d/mariadb-server.cnf
 
+RUN sed -e '/listen =/s/127.0.0.1/0.0.0.0/g' -i /etc/php7/php-fpm.d/www.conf
+
+#RUN echo "listen = 9000" >> /etc/php7/php-fpm.d/www.conf
+
 RUN mkdir -p /var/www/localhost/htdocs && \
     chmod -R 755 /var/www/localhost/htdocs
 
