@@ -8,20 +8,20 @@ services:
       - "80:80"
     restart: always
     volumes:
-      - wordpress:/usr/share/webapps
+      - /Users/rcabezas/data/wordpress:/usr/share/webapps
   mariadb:
     image: mariadb_rcabezas
     container_name: mariadb
     env_file: .env
     restart: always
     volumes:
-      - db:/var/lib/mysql
+      - /Users/rcabezas/data/db:/var/lib/mysql
   wordpress:
     image: wordpress_rcabezas
     container_name: wordpress
     restart: always
     volumes:
-      - wordpress:/usr/share/webapps
+      - /Users/rcabezas/data/wordpress:/usr/share/webapps
 
 volumes:
   wordpress:
