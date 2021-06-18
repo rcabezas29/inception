@@ -3,6 +3,8 @@ services:
   nginx:
     image: nginx_rcabezas
     container_name: nginx
+    networks: 
+      - default
     ports:
       - "443:443"
       - "80:80"
@@ -12,6 +14,8 @@ services:
   mariadb:
     image: mariadb_rcabezas
     container_name: mariadb
+    networks: 
+      - default
     env_file: .env
     restart: always
     volumes:
@@ -19,6 +23,8 @@ services:
   wordpress:
     image: wordpress_rcabezas
     container_name: wordpress
+    networks: 
+      - default
     restart: always
     volumes:
       - /Users/rcabezas/data/wordpress:/usr/share/webapps
@@ -26,3 +32,6 @@ services:
 volumes:
   wordpress:
   db:
+
+networks: 
+  default:

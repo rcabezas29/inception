@@ -13,4 +13,4 @@ RUN mkdir /run/nginx/ && \
     -out /etc/ssl/certs/nginx-selfsigned.crt \
     -keyout /etc/ssl/private/nginx-selfsigned.key
 
-CMD nginx && tail -f /dev/null
+CMD nginx -g 'daemon off;'

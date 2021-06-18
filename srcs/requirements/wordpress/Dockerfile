@@ -23,4 +23,4 @@ RUN mkdir -p /usr/share/webapps/ && \
 	rm -rf /var/www/localhost/htdocs/ && \
 	ln -s /usr/share/webapps/wordpress /var/www/localhost/htdocs
 
-CMD openrc && touch /run/openrc/softlevel && rc-service php-fpm7 restart && tail -f /dev/null
+CMD openrc && touch /run/openrc/softlevel && rc-service php-fpm7 restart && php-fpm7 --nodaemonize
