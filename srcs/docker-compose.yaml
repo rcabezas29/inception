@@ -10,7 +10,7 @@ services:
       - "80:80"
     restart: always
     volumes:
-      - /Users/rcabezas/data/wordpress:/usr/share/webapps
+      - wordpress:/usr/share/webapps
   mariadb:
     image: mariadb_rcabezas
     container_name: mariadb
@@ -19,15 +19,16 @@ services:
     env_file: .env
     restart: always
     volumes:
-      - /Users/rcabezas/data/db:/var/lib/mysql
+      - db:/var/lib/mysql
   wordpress:
     image: wordpress_rcabezas
     container_name: wordpress
-    networks: 
+    networks:
       - default
+    env_file: .env
     restart: always
     volumes:
-      - /Users/rcabezas/data/wordpress:/usr/share/webapps
+      - wordpress:/usr/share/webapps
 
 volumes:
   wordpress:
