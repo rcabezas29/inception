@@ -40,13 +40,13 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /Users/rcabezas/data/wordpress
+      device: /home/rcabezas/data/wordpress
   db:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /Users/rcabezas/data/db
+      device: /home/rcabezas/data/db
 
 networks: 
   default:
