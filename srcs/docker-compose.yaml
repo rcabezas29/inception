@@ -3,6 +3,8 @@ services:
   nginx:
     image: nginx_rcabezas
     container_name: nginx
+    depends_on: 
+      - wordpress
     networks: 
       - default
     ports:
@@ -23,6 +25,8 @@ services:
   wordpress:
     image: wordpress_rcabezas
     container_name: wordpress
+    depends_on: 
+      - mariadb
     networks:
       - default
     env_file: .env
@@ -32,7 +36,17 @@ services:
 
 volumes:
   wordpress:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /Users/rcabezas/data/wordpress
   db:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /Users/rcabezas/data/db
 
 networks: 
   default:
