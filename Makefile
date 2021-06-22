@@ -11,6 +11,8 @@
 # **************************************************************************** #
 
 all:
+	@mkdir -p /home/rcabezas/data/db
+	@mkdir -p /home/rcabezas/data/wordpress
 	@docker build -t mariadb_rcabezas ./srcs/requirements/mariadb/ 
 	@docker build -t wordpress_rcabezas ./srcs/requirements/wordpress/
 	@docker build -t nginx_rcabezas ./srcs/requirements/nginx/
