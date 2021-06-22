@@ -8,8 +8,6 @@ RUN sed -e '/skip-networking/s/^/#/g' -i /etc/my.cnf.d/mariadb-server.cnf
 
 COPY srcs/setup.sh .
 
-COPY srcs/env_setup.sh .
+RUN chmod -R 777 setup.sh
 
-RUN chmod -R 777 setup.sh && chmod -R 777 env_setup.sh
-
-CMD ./env_setup.sh && ./setup.sh && mysqld_safe
+CMD ./setup.sh && mysqld_safe
