@@ -8,6 +8,8 @@ RUN apk update && \
 
 COPY /srcs/wp-config.php /tmp
 
+COPY /srcs/env_setup.sh ./
+
 RUN sed -e '/skip-networking/s/^/#/g' -i /etc/my.cnf.d/mariadb-server.cnf
 
 RUN sed -e '/listen =/s/127.0.0.1/0.0.0.0/g' -i /etc/php7/php-fpm.d/www.conf
@@ -23,4 +25,6 @@ RUN mkdir -p /usr/share/webapps/ && \
 	rm -rf /var/www/localhost/htdocs/ && \
 	ln -s /usr/share/webapps/wordpress /var/www/localhost/htdocs
 
-CMD openrc && touch /run/openrc/softlevel && rc-service php-fpm7 restart && php-fpm7 --nodaemonize
+RUN chmod -R 777 env_setup.sh
+
+CMD ./env_setup.sh && openrc && touch /run/openrc/softlevel && rc-service php-fpm7 restart && php-fpm7 --nodaemonize
