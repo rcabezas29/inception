@@ -27,4 +27,4 @@ RUN mkdir -p /usr/share/webapps/ && \
 
 RUN chmod -R 777 env_setup.sh
 
-CMD ./env_setup.sh && openrc && touch /run/openrc/softlevel && rc-service php-fpm7 restart && php-fpm7 --nodaemonize
+CMD ./env_setup.sh && openrc && touch /run/openrc/softlevel && rc-service php-fpm7 stop && php-fpm7 --nodaemonize
