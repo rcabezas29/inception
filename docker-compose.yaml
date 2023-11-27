@@ -33,6 +33,15 @@ services:
     restart: always
     volumes:
       - wordpress:/usr/share/webapps
+  phpmyadmin:
+    image: phpmyadmin_rcabezas
+    container_name: phpmyadmin
+    depends_on:
+      - mariadb
+    restart: always
+    env_file: .env
+    networks:
+      - default
 
 volumes:
   wordpress:
